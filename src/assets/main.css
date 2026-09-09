@@ -1,35 +1,20 @@
-@import './base.css';
+@import 'tailwindcss';
+@import '@nuxt/ui';
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+@theme static {
+  --color-brand-50: #f9ffff;
+  --color-brand-100: #e0f7fa;
+  --color-brand-200: #b2ebf2;
+  --color-brand-300: #80cbc4;
+  --color-brand-400: #a5d6a7;
+  --color-brand-500: #81c784;
+  --color-brand-600: #66bb6a;
+  --color-brand-700: #4caf50;
+  --color-brand-800: #2e7d32;
+  --color-brand-900: #1b4332;
+  --color-brand-950: #0d2818;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+body {
+  background-color: var(--color-brand-50);
 }
