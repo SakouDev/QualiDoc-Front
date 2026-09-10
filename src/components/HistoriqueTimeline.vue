@@ -1,32 +1,38 @@
 <script setup lang="ts">
-import type { RendezVous } from '@/types'
+import type { RendezVous } from "@/types";
 
-defineProps<{ historique: RendezVous[]; hasLoadedOnce: boolean }>()
+defineProps<{ historique: RendezVous[]; hasLoadedOnce: boolean }>();
 
 function statutColor(statut: string) {
-  if (statut === 'confirme') return 'success'
-  if (statut === 'annule') return 'error'
-  if (statut === 'honore') return 'info'
-  return 'neutral'
+  if (statut === "confirme") return "success";
+  if (statut === "annule") return "error";
+  if (statut === "honore") return "info";
+  return "neutral";
 }
 
 function statutLabel(statut: string) {
-  if (statut === 'confirme') return 'Confirmé'
-  if (statut === 'annule') return 'Annulé'
-  if (statut === 'honore') return 'Honoré'
-  return statut
+  if (statut === "confirme") return "Confirmé";
+  if (statut === "annule") return "Annulé";
+  if (statut === "honore") return "Honoré";
+  return statut;
 }
 </script>
 
 <template>
   <div v-if="!hasLoadedOnce" class="flex flex-col gap-2">
-    <div v-for="i in 2" :key="i" class="flex flex-col gap-2 rounded-md border p-3">
+    <div
+      v-for="i in 2"
+      :key="i"
+      class="flex flex-col gap-2 rounded-md border p-3"
+    >
       <USkeleton class="h-4 w-40" />
       <USkeleton class="h-3 w-56" />
     </div>
   </div>
 
-  <p v-else-if="historique.length === 0" class="text-sm text-muted">Aucun rendez-vous passé.</p>
+  <p v-else-if="historique.length === 0" class="text-sm text-muted">
+    Aucun rendez-vous passé.
+  </p>
 
   <UTimeline
     v-else
@@ -56,7 +62,11 @@ function statutLabel(statut: string) {
     <template #title="{ item }">
       <div class="flex items-center gap-2">
         <span>{{ item.title }}</span>
-        <UBadge :color="statutColor(item.statut as string)" variant="subtle" size="sm">
+        <UBadge
+          :color="statutColor(item.statut as string)"
+          variant="subtle"
+          size="sm"
+        >
           {{ statutLabel(item.statut as string) }}
         </UBadge>
       </div>
