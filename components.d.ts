@@ -11,6 +11,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    DisponibilitesPanel: typeof import('./src/components/admin/DisponibilitesPanel.vue')['default']
     HistoriqueTimeline: typeof import('./src/components/HistoriqueTimeline.vue')['default']
     MedecinSearch: typeof import('./src/components/MedecinSearch.vue')['default']
     MedecinsPanel: typeof import('./src/components/admin/MedecinsPanel.vue')['default']
