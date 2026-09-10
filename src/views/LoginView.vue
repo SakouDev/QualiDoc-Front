@@ -1,33 +1,34 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
-import api from '@/api/ApiService'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+import api from "@/api/ApiService";
 
-const router = useRouter()
-const auth = useAuthStore()
+const router = useRouter();
+const auth = useAuthStore();
 
-const email = ref('')
-const password = ref('')
-const error = ref('')
-const loading = ref(false)
+const email = ref("");
+const password = ref("");
+const error = ref("");
+const loading = ref(false);
 
 async function submit() {
-  error.value = ''
-  loading.value = true
+  error.value = "";
+  loading.value = true;
 
   try {
-    const { data } = await api.post('/auth/login', {
+    const { data } = await api.post("/auth/login", {
       email: email.value,
       password: password.value,
-    })
+    });
 
-    auth.setAuth(data.token, data.patient)
-    router.push('/')
+    auth.setAuth(data.token, data.patient);
+    router.push("/");
   } catch (e: any) {
-    error.value = e.response?.data?.messages?.error ?? 'Une erreur est survenue.'
+    error.value =
+      e.response?.data?.messages?.error ?? "Une erreur est survenue.";
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 </script>
@@ -44,7 +45,13 @@ async function submit() {
 
       <form class="flex flex-col gap-10 w-80" @submit.prevent="submit">
         <UFormField label="Email" name="email">
-          <UInput v-model="email" type="email" required autocomplete="email" class="w-full" />
+          <UInput
+            v-model="email"
+            type="email"
+            required
+            autocomplete="email"
+            class="w-full"
+          />
         </UFormField>
 
         <UFormField label="Mot de passe" name="password">
@@ -57,15 +64,22 @@ async function submit() {
           />
         </UFormField>
 
-        <UAlert v-if="error" color="error" variant="subtle" :description="error" />
+        <UAlert
+          v-if="error"
+          color="error"
+          variant="subtle"
+          :description="error"
+        />
 
         <UButton class="my-2 p-2" type="submit" :loading="loading" block>
-          {{ loading ? 'Connexion...' : 'Se connecter' }}
+          {{ loading ? "Connexion..." : "Se connecter" }}
         </UButton>
 
         <p class="text-center text-sm">
           Pas encore de compte ?
-          <router-link to="/register" class="text-primary font-medium">S'inscrire</router-link>
+          <router-link to="/register" class="text-primary font-medium"
+            >S'inscrire</router-link
+          >
         </p>
       </form>
     </UCard>

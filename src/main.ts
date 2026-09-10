@@ -1,19 +1,19 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-import App from './App.vue'
-import router from './router'
-import ui from '@nuxt/ui/vue-plugin'
+import App from "./App.vue";
+import router from "./router";
+import ui from "@nuxt/ui/vue-plugin";
 
-localStorage.setItem('vueuse-color-scheme', 'light')
-document.documentElement.classList.remove('dark')
+localStorage.setItem("vueuse-color-scheme", "light");
+document.documentElement.classList.remove("dark");
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
-app.use(ui)
+app.use(createPinia());
+app.use(router);
+app.use(ui);
 
-app.mount('#app')
+app.mount("#app");

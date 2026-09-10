@@ -1,38 +1,40 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/auth'
-import api from '@/api/ApiService'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/auth";
+import api from "@/api/ApiService";
 
-const router = useRouter()
-const auth = useAuthStore()
+const router = useRouter();
+const auth = useAuthStore();
 
-const nom = ref('')
-const prenom = ref('')
-const email = ref('')
-const password = ref('')
-const errors = ref<string[]>([])
-const loading = ref(false)
+const nom = ref("");
+const prenom = ref("");
+const email = ref("");
+const password = ref("");
+const errors = ref<string[]>([]);
+const loading = ref(false);
 
 async function submit() {
-  errors.value = []
-  loading.value = true
+  errors.value = [];
+  loading.value = true;
 
   try {
-    const { data } = await api.post('/auth/register', {
+    const { data } = await api.post("/auth/register", {
       nom: nom.value,
       prenom: prenom.value,
       email: email.value,
       password: password.value,
-    })
+    });
 
-    auth.setAuth(data.token, data.patient)
-    router.push('/')
+    auth.setAuth(data.token, data.patient);
+    router.push("/");
   } catch (e: any) {
-    const messages = e.response?.data?.messages
-    errors.value = messages ? Object.values(messages) : ['Une erreur est survenue.']
+    const messages = e.response?.data?.messages;
+    errors.value = messages
+      ? Object.values(messages)
+      : ["Une erreur est survenue."];
   } finally {
-    loading.value = false
+    loading.value = false;
   }
 }
 </script>
@@ -57,7 +59,13 @@ async function submit() {
         </UFormField>
 
         <UFormField label="Email" name="email">
-          <UInput v-model="email" type="email" required autocomplete="email" class="w-full" />
+          <UInput
+            v-model="email"
+            type="email"
+            required
+            autocomplete="email"
+            class="w-full"
+          />
         </UFormField>
 
         <UFormField label="Mot de passe" name="password">
@@ -71,7 +79,12 @@ async function submit() {
           />
         </UFormField>
 
-        <UAlert v-if="errors.length" color="error" variant="subtle" title="Erreur">
+        <UAlert
+          v-if="errors.length"
+          color="error"
+          variant="subtle"
+          title="Erreur"
+        >
           <template #description>
             <ul class="list-disc pl-4">
               <li v-for="(message, i) in errors" :key="i">{{ message }}</li>
@@ -80,12 +93,14 @@ async function submit() {
         </UAlert>
 
         <UButton class="my-2 p-2" type="submit" :loading="loading" block>
-          {{ loading ? 'Création...' : 'Créer mon compte' }}
+          {{ loading ? "Création..." : "Créer mon compte" }}
         </UButton>
 
         <p class="text-center text-sm">
           Déjà un compte ?
-          <router-link to="/login" class="text-primary font-medium">Se connecter</router-link>
+          <router-link to="/login" class="text-primary font-medium"
+            >Se connecter</router-link
+          >
         </p>
       </form>
     </UCard>
