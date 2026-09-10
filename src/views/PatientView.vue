@@ -47,7 +47,7 @@ function logout() {
         <div class="h-fit order-2 flex flex-col lg:order-1 lg:sticky lg:top-6">
           <MedecinSearch @booked="refreshKey++" />
         </div>
-        =
+        
         <!-- RIGHT CARD -->
         <div class="h-fit order-1 flex flex-col lg:order-2 lg:sticky lg:top-6">
           <RendezVousCalendar :refresh-key="refreshKey" />

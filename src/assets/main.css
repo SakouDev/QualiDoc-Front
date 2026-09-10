@@ -18,3 +18,16 @@
 body {
   background-color: var(--color-brand-50);
 }
+
+/* Les popovers/dropdowns (Reka UI) sont en position: fixed sans z-index
+   explicite (z-index: auto) — ils peuvent perdre la bataille d'empilement
+   face à un conteneur positionné comme UTable (position: relative) placé
+   avant eux dans le flux, et se retrouver visuellement "sous" son contenu
+   au lieu d'au-dessus. Un z-index explicite règle ça pour tous les
+   popovers/dropdowns d'un coup (attribut commun à tous les composants
+   Reka UI basés sur Popper : Select, SelectMenu, Popover, DropdownMenu...). */
+[data-reka-popper-content-wrapper] {
+  /* Reka UI fixe lui-même z-index: auto en style inline (JS), qui gagne
+     toujours face à une règle CSS classique — d'où le !important. */
+  z-index: 50 !important;
+}
