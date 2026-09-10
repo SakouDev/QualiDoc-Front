@@ -16,6 +16,15 @@ export interface Creneau {
   disponible: boolean;
 }
 
+export interface Disponibilite {
+  id: number;
+  medecin_id: number;
+  date_dispo: string;
+  heure_debut: string;
+  heure_fin: string;
+  duree_creneau: number;
+}
+
 export interface RendezVous {
   id: number;
   patient_id: number;

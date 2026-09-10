@@ -4,6 +4,7 @@ import { useAuthStore } from '@/stores/auth'
 import MedecinsPanel from '@/components/admin/MedecinsPanel.vue'
 import SpecialitesPanel from '@/components/admin/SpecialitesPanel.vue'
 import RendezVousPanel from '@/components/admin/RendezVousPanel.vue'
+import DisponibilitesPanel from '@/components/admin/DisponibilitesPanel.vue'
 
 const router = useRouter()
 const auth = useAuthStore()
@@ -17,6 +18,7 @@ const items = [
   { label: 'Médecins', slot: 'medecins' as const },
   { label: 'Spécialités', slot: 'specialites' as const },
   { label: 'Rendez-vous', slot: 'rendez-vous' as const },
+  { label: 'Disponibilités', slot: 'disponibilites' as const },
 ]
 </script>
 
@@ -40,6 +42,9 @@ const items = [
         </template>
         <template #rendez-vous>
           <RendezVousPanel />
+        </template>
+        <template #disponibilites>
+          <DisponibilitesPanel />
         </template>
       </UTabs>
     </section>
