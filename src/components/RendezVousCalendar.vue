@@ -4,6 +4,7 @@ import type { CalendarDate } from "@internationalized/date";
 import { useToast } from "@nuxt/ui/composables";
 import api from "@/api/ApiService";
 import type { RendezVous } from "@/types";
+import { statutColor, statutLabel } from "@/utils/statut";
 import HistoriqueTimeline from "@/components/HistoriqueTimeline.vue";
 
 const props = defineProps<{ refreshKey: number }>();
@@ -62,20 +63,6 @@ const selectedKey = computed(() =>
 const selectedDayRdv = computed(() =>
   selectedKey.value ? (rdvByDay.value.get(selectedKey.value) ?? []) : [],
 );
-
-function statutColor(statut: string) {
-  if (statut === "confirme") return "success";
-  if (statut === "annule") return "error";
-  if (statut === "honore") return "info";
-  return "neutral";
-}
-
-function statutLabel(statut: string) {
-  if (statut === "confirme") return "Confirmé";
-  if (statut === "annule") return "Annulé";
-  if (statut === "honore") return "Honoré";
-  return statut;
-}
 
 const historique = computed(() =>
   [...rendezVous.value]

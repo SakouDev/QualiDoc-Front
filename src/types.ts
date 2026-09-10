@@ -25,4 +25,7 @@ export interface RendezVous {
   medecin_nom: string;
   medecin_prenom: string;
   specialite_nom: string;
+  // Présents uniquement sur /admin/rendez-vous (jointure patients côté back).
+  patient_nom?: string;
+  patient_prenom?: string;
 }

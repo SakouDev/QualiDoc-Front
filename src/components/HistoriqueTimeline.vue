@@ -1,21 +1,8 @@
 <script setup lang="ts">
 import type { RendezVous } from "@/types";
+import { statutColor, statutLabel } from "@/utils/statut";
 
 defineProps<{ historique: RendezVous[]; hasLoadedOnce: boolean }>();
-
-function statutColor(statut: string) {
-  if (statut === "confirme") return "success";
-  if (statut === "annule") return "error";
-  if (statut === "honore") return "info";
-  return "neutral";
-}
-
-function statutLabel(statut: string) {
-  if (statut === "confirme") return "Confirmé";
-  if (statut === "annule") return "Annulé";
-  if (statut === "honore") return "Honoré";
-  return statut;
-}
 </script>
 
 <template>

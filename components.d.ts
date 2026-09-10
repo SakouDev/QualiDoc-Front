@@ -13,10 +13,13 @@ declare module 'vue' {
   export interface GlobalComponents {
     HistoriqueTimeline: typeof import('./src/components/HistoriqueTimeline.vue')['default']
     MedecinSearch: typeof import('./src/components/MedecinSearch.vue')['default']
+    MedecinsPanel: typeof import('./src/components/admin/MedecinsPanel.vue')['default']
     RendezVousCalendar: typeof import('./src/components/RendezVousCalendar.vue')['default']
     RendezVousCalendarNuxtUI: typeof import('./src/components/RendezVousCalendarNuxtUI.vue')['default']
+    RendezVousPanel: typeof import('./src/components/admin/RendezVousPanel.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SpecialitesPanel: typeof import('./src/components/admin/SpecialitesPanel.vue')['default']
     UAlert: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Alert.vue')['default']
     UApp: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
     UBadge: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Badge.vue')['default']
@@ -27,8 +30,13 @@ declare module 'vue' {
     UFormField: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/FormField.vue')['default']
     UInput: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Input.vue')['default']
     UListbox: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Listbox.vue')['default']
+    UModal: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Modal.vue')['default']
+    UPagination: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Pagination.vue')['default']
     UPopover: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Popover.vue')['default']
+    USelectMenu: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/SelectMenu.vue')['default']
     USkeleton: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Skeleton.vue')['default']
+    UTable: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Table.vue')['default']
+    UTabs: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Tabs.vue')['default']
     UTimeline: typeof import('./node_modules/@nuxt/ui/dist/runtime/components/Timeline.vue')['default']
   }
 }
