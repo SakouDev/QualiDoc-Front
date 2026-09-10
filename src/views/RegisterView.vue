@@ -49,7 +49,7 @@ async function submit() {
         <h1 class="text-xl font-semibold text-brand-900">Créer un compte</h1>
       </template>
 
-      <form class="flex flex-col gap-6 w-80" @submit.prevent="submit">
+      <form class="flex w-full flex-col gap-6" @submit.prevent="submit">
         <UFormField label="Nom" name="nom">
           <UInput v-model="nom" type="text" required class="w-full" />
         </UFormField>

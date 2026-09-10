@@ -43,7 +43,7 @@ async function submit() {
         <h1 class="text-xl font-semibold text-brand-900">Connexion</h1>
       </template>
 
-      <form class="flex flex-col gap-10 w-80" @submit.prevent="submit">
+      <form class="flex w-full flex-col gap-10" @submit.prevent="submit">
         <UFormField label="Email" name="email">
           <UInput
             v-model="email"
